@@ -1,64 +1,70 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Form Maker/Login</title> 
-    
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Form Maker-Login</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="css/dashboard.css" rel="stylesheet"/>
 </head>
 <body>
-    <div id="head" class="container">
-        <div class="row"> 
-            <div class="col-xs-7">
-                <h1> Form Maker </h1>
-            </div>
-            <div class="col-xs-1">
-                <h5><a href='register.html'>Register</a></h5>
-            </div>
-            <div class="col-xs-1">
-                <h5><a href='login.html'>Login</a></h5>
-            </div>
-            <div class="col-xs-1">
-                <h5><a href='username.html'>Username</a></h5>
-            </div>
-            <div class="col-xs-1">
-                <h5><a href='logout.html'>Logout</a></h5>
-            </div>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Form Maker</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="register.html">Register</a></li>
+                <li><a href="#">Login</a></li>
+                <li><a href="username.html">Username</a></li>
+                <li><a href="logout.html">Logout</a></li>
+            </ul>
         </div>
     </div>
-    
-    <div id="intro" class="container">
-        <div class="row">
-            <div class="col-xs-1">
-                <h5><a class="btn btn-block" href='home.html'>Home</a></h5>
-                <h5><a class="btn btn-block" href='profile.html'>Profile</a></h5>
-                <h5><a class="btn btn-block" href='admin.html'>Admin</a></h5>
-                <h5><a class="btn btn-block" href='forms.html'>Forms</a></h5>
-            </div>
-            <div class="col-xs-11">
-                <h2>Login</h2>
-            <form class="form-horizontal">
-                <div class="form-group">
-                    <div class="col-xs-2">
-                        <label for="userName">Username:</label>
-                    </div>
-                    <div class="col-xs-9">
-                        <input id="userName" class="form-control" type="text" placeholder="Username"/>
-                    </div>
-                </div>
-                <div class="form-group">
+</nav>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+            <ul class="nav nav-sidebar">
+                <li><a href='home.html'>Home</a></li>
+                <li><a href="profile.html">Profile</a></li>
+                <li><a href="admin.html">Admin</a></li>
+                <li><a href="forms.html">Forms</a></li>
+            </ul>
+        </div>
+        <div class="container-fluid">
+            <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+                <h1 class="page-header">Login</h1>
+                <form class="form-horizontal">
+                    <div class="form-group">
                         <div class="col-xs-2">
-                    <label for="password"> Password:</label>
+                            <label for="userName">Username:</label>
                         </div>
                         <div class="col-xs-9">
-                    <input id="password" class="form-control" type="password" placeholder="Password"/>
+                            <input id="userName" class="form-control" type="text" placeholder="Username"/>
                         </div>
-                </div>
-                <div class="col-xs-2">
-            	<button class="btn btn-primary btn-block" type="button">Login</button>
-                </div>
-            </form>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-2">
+                            <label for="password"> Password:</label>
+                        </div>
+                        <div class="col-xs-9">
+                            <input id="password" class="form-control" type="password" placeholder="Password"/>
+                        </div>
+                    </div>
+                    <div class="col-xs-2">
+                        <button class="btn btn-primary btn-block" type="button">Login</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
+</div>
 </body>
 </html>
