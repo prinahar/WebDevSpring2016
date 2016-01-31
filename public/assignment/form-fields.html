@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Form Maker-Forms</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="css/dashboard.css" rel="stylesheet"/>
+</head>
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Form Maker</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="register.html">Register</a></li>
+                <li><a href="login.html">Login</a></li>
+                <li><a href="username.html">Username</a></li>
+                <li><a href="logout.html">Logout</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+            <ul class="nav nav-sidebar">
+                <li><a href='home.html'>Home</a></li>
+                <li><a href="profile.html">Profile</a></li>
+                <li><a href="admin.html">Admin</a></li>
+                <li class ="active"><a href="#">Forms<span class="sr-only">(current)</span></a></li>
+            </ul>
+        </div>
+        <div class="container-fluid">
+            <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+                <h1 class="page-header">Forms</h1>
+            </div>
+            <div class="container-fluid">
+                <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+                    <ul class="nav nav-tabs nav-justified">
+                        <li role="presentation"><a href="forms.html">Forms</a></li>
+                        <li role="presentation" class="active"><a href="#">Fields</a></li>
+                    </ul>
+                    <form class="form-horizontal"><br>
+                        <div class="form-group">
+                            <label for="firstName">First Name:</label><br>
+                            <input id="firstName" class="form-control" type="text" placeholder="First Name"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="lasttName">Last Name:</label><br>
+                            <input id="lasttName" class="form-control" type="text" placeholder="Last Name"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="dateOfBirth">Date of Birth:</label><br>
+                            <input id="dateOfBirth" class="form-control" type="date" placeholder="Select a Date"/>
+                        </div>
+                            <label>Gender:</label><br>
+                        <div class="btn btn-group dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                                Male<span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Female</a></li>
+                            </ul>
+                        </div>
+                    <div class="form-group">
+                        <div class="checkbox">
+                            <label><h5><b>Roles:</b></h5></label><br>
+                            <label><input type="checkbox">Admin</label><br>
+                            <label><input type="checkbox">Student</label><br>
+                            <label><input type="checkbox">User</label><br>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>License Agreement :</label><br>
+                        <label><input type="radio"> Yes</label><br>
+                        <label><input type="radio"> No</label><br>
+                    </div>
+                    <label> Add New Fields</label><br>
+                    <div class="btn btn-group dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                            Single Line Text<span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Female</a></li>
+                        </ul>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins)
+==================================================
+Placed at the end of the document so the pages load faster -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+</body>
+</html>
