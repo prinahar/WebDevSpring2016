@@ -22,8 +22,8 @@
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="register.html">Register</a></li>
                 <li><a href="login.html">Login</a></li>
-                <li><a href="username.html">Username</a></li>
-                <li><a href="logout.html">Logout</a></li>
+                <li><a href="profile.html">Username</a></li>
+                <li><a href="home.html">Logout</a></li>
             </ul>
         </div>
     </div>
@@ -74,68 +74,72 @@
                             <input id="dateOfBirth" class="form-control" type="date" placeholder="Select a Date"/>
                         </div>
                         <div class="form-group">
-                            <label class="col-xs-11">Gender :</label>
+                            <label class="col-xs-11">Gender:</label>
                             <span class="glyphicon glyphicon-plus"></span>
                             <span class="glyphicon glyphicon-remove"></span>
                             <span class="glyphicon glyphicon-pencil"></span>
                             <span class="glyphicon glyphicon-tasks"></span>
                         </div>
-                        <div class="btn-group dropdown">
-                            <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                                Male<span class="caret"></span>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Female</a></li>
-                            </ul>
+                        <div>
+                            <select name="select">
+                                <option value="male" selected> Male </option>
+                                <option value="female">Female</option>
+                            </select>
+                        </div><br>
+
+                        <div class="form-group">
+                            <label class="col-xs-11">Roles:</label><br>
+                            <span class="glyphicon glyphicon-plus"></span>
+                            <span class="glyphicon glyphicon-remove"></span>
+                            <span class="glyphicon glyphicon-pencil"></span>
+                            <span class="glyphicon glyphicon-tasks"></span><br>
+                            <label><input type="checkbox"> Admin</label><br>
+                            <label><input type="checkbox"> Student</label><br>
+                            <label><input type="checkbox"> User</label><br>
                         </div>
-                    <div class="form-group">
-                        <label class="col-xs-11"><h5>Roles:</h5></label><br>
-                        <span class="glyphicon glyphicon-plus"></span>
-                        <span class="glyphicon glyphicon-remove"></span>
-                        <span class="glyphicon glyphicon-pencil"></span>
-                        <span class="glyphicon glyphicon-tasks"></span><br>
-                        <label><input type="checkbox"> Admin</label><br>
-                        <label><input type="checkbox"> Student</label><br>
-                        <label><input type="checkbox"> User</label><br>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-xs-11">License Agreement :</label><br>
-                        <span class="glyphicon glyphicon-plus"></span>
-                        <span class="glyphicon glyphicon-remove"></span>
-                        <span class="glyphicon glyphicon-pencil"></span>
-                        <span class="glyphicon glyphicon-tasks"></span><br>
-                        <label><input type="radio"> Yes</label><br>
-                        <label><input type="radio"> No</label><br>
-                    </div>
+                        <div class="form-group">
+                            <label class="col-xs-11">License Agreement :</label><br>
+                            <span class="glyphicon glyphicon-plus"></span>
+                            <span class="glyphicon glyphicon-remove"></span>
+                            <span class="glyphicon glyphicon-pencil"></span>
+                            <span class="glyphicon glyphicon-tasks"></span><br>
+                            <label class="btn **active**">
+                                <input type="radio" value="Yes">
+                                   Yes
+                            </label><br>
+                            <label class="btn">
+                                 <input type="radio" value="No">
+                                    No
+                            </label><br>
+                        </div>
                         <div class="form-group">
                             <label  class="col-xs-11">Add New Fields :</label><br>
                              <span class="glyphicon glyphicon-plus"></span>
                              <span class="glyphicon glyphicon-remove"></span>
                             <span class="glyphicon glyphicon-pencil"></span>
                             <span class="glyphicon glyphicon-tasks"></span><br>
-                        <div class="btn-group dropdown">
-                            <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                            Single Line Text<span class="caret"></span>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Date</a></li>
-                                <li><a href="#">Dropdown</a></li>
-                                <li><a href="#">Checkboxes</a></li>
-                                <li><a href="#">Radio Buttons</a></li>
-                                <li><a href="#">Paragraph Text Fields</a></li>
-                            </ul>
+
+                            <select name="select">
+                                <option value="singleline" selected> Single Line Text </option>
+                                <option value="date"> Date </option>
+                                <option value="dropdown"> Dropdown </option>
+                                <option value="checkboxes"> Checkboxes </option>
+                                <option value="radio"> Radio Buttons </option>
+                                <option value="paratext"> Paragraph Text Fields </option>
+                            </select>
                         </div>
-                    </div>
-                </form>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
-</div>
 </div>
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins)
 ==================================================
 Placed at the end of the document so the pages load faster -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
 </body>
 </html>
