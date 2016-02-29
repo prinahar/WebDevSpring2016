@@ -4,9 +4,9 @@
         <ul class="nav nav-sidebar">
             <!--<li class="active"><a href="#">Overview <span class="sr-only">(current)</span></a></li>-->
             <li><a href="#/home" ng-class="{'active' : $location.url() == '/home'}">Home</a></li>
-            <li><a href="#/profile" ng-class="{'active' : $location.url() == '/profile'}">Profile</a></li>
-            <li><a href="#/forms" ng-class="{'active' : $location.url() == '/forms'}">Form</a></li>
-            <li><a href="#/admin" ng-class="{'active' : $location.url() == '/admin'}">Admin</a></li>
+            <li ng-show="user"><a href="#/profile" ng-class="{'active' : $location.url() == '/profile'}">Profile</a></li>
+            <li ng-show="user"><a href="#/forms" ng-class="{'active' : $location.url() == '/forms'}">Form</a></li>
+            <li ng-show="user.roles.indexOf('admin') >= 0"><a href="#/admin" ng-class="{'active' : $location.url() == '/admin'}">Admin</a></li>
         </ul>
     </div>
 </div>
