@@ -11,11 +11,11 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#/register">Register</a></li>
-                <li><a href="#/login">Login</a></li>
-                <li><a href="#/">Logout</a></li>
-                <li><a href="#/profile">Username</a></li>
-                <li><a href="#/admin">Admin</a></li>
+                <li ng-hide="user"><a href="#/register">Register</a></li>
+                <li ng-hide="user"><a href="#/login">Login</a></li>
+                <li ng-show="user"><a href="#/">Logout</a></li>
+                <li ng-show="user"><a href="#/profile">Username</a></li>
+                <li ng-show="user.roles.indexOf('admin') >= 0"><a href="#/admin">Admin</a></li>
             </ul>
             <form class="navbar-form navbar-right">
                 <input type="text" class="form-control" placeholder="Search...">
