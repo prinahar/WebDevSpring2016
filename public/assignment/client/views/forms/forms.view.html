@@ -18,37 +18,15 @@
             </form>
         </td>
         <td>
-            <span ng-click="addForm(form)" class="btn glyphicon glyphicon-plus"></span>
+            <span ng-click="addForm()" class="btn glyphicon glyphicon-plus"></span>
             <span ng-click="updateForm(form)" class="btn glyphicon glyphicon-ok"></span>
         </td>
     </tr>
     <tr ng-repeat="form in forms">
-        <td>{{form.title}}</td>
+        <td><a href="#/form/{{form._id}}/fields">{{form.title}}</a></td>
         <td>
         <span ng-click="deleteForm($index)" class="btn glyphicon glyphicon-remove"></span>
         <span ng-click="selectForm($index)" class="btn glyphicon glyphicon-pencil"></span>
         </td>
-
-        </tr><!--<tr>-->
-        <!--<td><a href="#/fields">Registration Form</a></td>-->
-        <!--<td>-->
-            <!--<span class="glyphicon glyphicon-remove"></span>-->
-            <!--<span class="glyphicon glyphicon-pencil"></span>-->
-        <!--</td>-->
-    <!--</tr>-->
-    <!--<tr>-->
-        <!--<td><a href="#/fields">Contact List</a></td>-->
-        <!--<td>-->
-            <!--<span class="glyphicon glyphicon-remove"></span>-->
-            <!--<span class="glyphicon glyphicon-pencil"></span>-->
-        <!--</td>-->
-    <!--</tr>-->
-    <!--<tr>-->
-    <!--<td><a href="#/fields">To Do List</a></td>-->
-        <!--<td>-->
-            <!--<span class="glyphicon glyphicon-remove"></span>-->
-            <!--<span class="glyphicon glyphicon-pencil"></span>-->
-        <!--</td>-->
-    <!--</tr>-->
     </tbody>
 </table>

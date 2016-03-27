@@ -10,7 +10,7 @@
 
         $scope.update = update;
         function update(user) {
-            $rootScope.user = UserService.updateUser(user._id, user, null);
+            UserService.updateUser(user._id, user);
         }
 
     }
