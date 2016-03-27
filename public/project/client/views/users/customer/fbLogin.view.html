@@ -1,5 +1,7 @@
 <!--<h1 class="page-header">Login For Customers</h1>-->
-<form ng-controller="fbLoginController" ng-class="form-horizontal">
+<div class="container" ng-controller="fbLoginController">
+    <h2 class="page-header">Login Details</h2>
+<form  ng-class="form-horizontal">
     <script>
         window.fbAsyncInit = function() {
             FB.init({
@@ -22,3 +24,4 @@
     <!--<div class="btn btn-primary">Login with Facebook</div>-->
     <div class="fb-login-button" data-max-rows="1" data-size="medium" data-show-faces="false" data-auto-logout-link="false"></div>
 </form>
+</div>

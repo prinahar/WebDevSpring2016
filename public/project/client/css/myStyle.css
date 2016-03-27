@@ -9,3 +9,16 @@
 input {
     margin: 10px;
 }
+.btn {
+    margin: 10px;
+}
+.page-header {
+    padding-top: 5%;
+}
+
+.customBG {
+    background-image: url("http://nanosmile.net/wp-content/uploads/Cool-Black-Background-Designs.jpg");
+    height: 1000px;
+    background-size: cover;
+    color: white;
+}
