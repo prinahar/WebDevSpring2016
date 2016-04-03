@@ -10,6 +10,7 @@
         $scope.deleteForm = deleteForm;
         $scope.selectForm = selectForm;
 
+
         FormService
             .findAllFormsForUser(currentUserId)
             .then(function(response) {

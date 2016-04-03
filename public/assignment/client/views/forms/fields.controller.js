@@ -12,24 +12,26 @@
         $scope.editField = editField;
         $scope.modalField = {};
         $scope.fields=[];
+        $scope.field = {};
+        $scope.fieldModal = {};
 
 
-        initialDisplayOfForms();
+        init();
 
 
-        function initialDisplayOfForms(){
+        function init(){
             console.log(formId);
             getFieldsForForm(formId);
         }
 
 
         function getFieldsForForm(formId) {
-
             FieldService.getFieldsForForm(formId)
                 .then(
                     function (response) {
+                        console.log("Fields before: " + JSON.stringify($scope.fields));
                         $scope.fields = response.data;
-                        console.log("Fields: " + $scope.fields);
+                        console.log("Fields after: " + JSON.stringify($scope.fields));
                     }
                 )
         }
@@ -123,30 +125,36 @@
 
 
         function editField(fieldId) {
-
-            FieldService.getFieldForForm(formId,fieldId)
+            console.log("Got FieldID from field" + fieldId);
+            FieldService.getFieldForForm(formId, fieldId)
                 .then(
                     function (response) {
-                        $scope.modalField = response.data;
-                        console.log($scope.modalField);
+                        console.log("Response :" + response.data);
+                        var newLabel  = response.data.label;
+                        $scope.fieldModal.label = newLabel;
+                        $scope.field._id = fieldId; //setting the field id for update field function to access
+                        //$scope.fieldModal._id = $scope.field._id;
                     }
                 );
 
         }
 
         function updateField(newField) {
-            if(newField.options){
-                newField.options = JSON.parse(newField.options);
-            }
+            if (newField) {
+                if (newField.options) {
+                    newField.options = JSON.parse(newField.options);
+                }
 
-            FieldService.updateField(formId,newField._id,newField)
-                .then(
-                    function (response) {
-                        console.log(response.data);
-                        $scope.modalField = response.data;
-                        getFieldsForForm(formId);
-                    }
-                );
+                FieldService.updateField(formId, $scope.field._id, newField)
+                    .then(
+                        function (response) {
+                                console.log(response.data);
+                                $scope.modalField = response.data;
+                                $scope.field = response.data;
+                                getFieldsForForm(formId);
+                        }
+                    );
+            }
         }
 
         function deleteField(fieldId) {

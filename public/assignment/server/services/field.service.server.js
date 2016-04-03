@@ -54,15 +54,22 @@ module.exports = function(app, formModel) {
         var formId = req.params.formId;
         var fieldId = req.params.fieldId;
         var newField = req.body;
+        console.log("Server Services -> form id ->"+ formId + " field id ->" + fieldId);
         var form = formModel.findFormById(formId);
         var fields = form.fields;
         for(var i in fields) {
             var field = fields[i];
             if (fieldId === field._id) {
-                field.label = newField.label;
-                field.type = newField.type;
-                field.placeholder = newField.placeholder;
-                getFieldsForForm(req, res);
+                if (newField.label) {
+                    field.label = newField.label;
+                }
+                if (newField.type) {
+                    field.type = newField.type;
+                }
+                if (newField.placeholder) {
+                    field.placeholder = newField.placeholder;
+                }
+                res.json(field);
             }
         }
     }
