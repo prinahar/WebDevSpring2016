@@ -11,10 +11,9 @@ module.exports = function(app, formModel) {
         var form = formModel.findFormById(formId);
 
         var field = req.body;
-        field._id = new Date().getTime();
+        // TODO: validate that field is of type String
         form.fields.push(field);
-
-        res.send(form);
+        res.send(form.fields);
     }
 
     function getFieldsForForm(req, res){
@@ -27,12 +26,16 @@ module.exports = function(app, formModel) {
     function getFieldForForm(req, res){
         var formId = req.params.formId;
         var fieldId = req.params.fieldId;
+        console.log("Field: " + fieldId)
         var form = formModel.findFormById(formId);
         var fields = form.fields;
         for(var i in fields){
+            console.log("Index: " + i + " FieldId: " + fields[i]._id)
             if(fieldId === fields[i]._id) {
                 var field = fields[i];
                 res.send(field);
+                console.log("Returning");
+                return;
             }
         }
     }
@@ -62,12 +65,10 @@ module.exports = function(app, formModel) {
             if (fieldId === field._id) {
                 if (newField.label) {
                     field.label = newField.label;
+                    field.placeholder = newField.label;
                 }
                 if (newField.type) {
                     field.type = newField.type;
-                }
-                if (newField.placeholder) {
-                    field.placeholder = newField.placeholder;
                 }
                 res.json(field);
             }

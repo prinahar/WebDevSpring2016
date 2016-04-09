@@ -3,6 +3,8 @@ var app = express();
 var bodyParser = require('body-parser');
 var multer = require('multer'); // v1.0.5
 var upload = multer(); // for parsing multipart/form-data
+//var mongoose = require('mongoose');
+//var connectionString = 'mongodb://127.0.0.1:27017/AssignmentWebDev';
 
 app.use(bodyParser.json()); // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -16,8 +18,7 @@ app.get('/hello', function(req, res){
 });
 
 // Initializing server app.js
-var serverAppFn = require("./public/assignment/server/app.js");
-serverAppFn(app)
+require("./public/assignment/server/app.js")(app);
 
 app.listen(port, ipaddress);
 
