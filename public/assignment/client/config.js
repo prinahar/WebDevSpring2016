@@ -5,7 +5,6 @@
 
 
     function Configure($routeProvider) {
-        console.log("config.js");
         $routeProvider
             .when("/home", {
                 templateUrl : "views/home/home.view.html"

@@ -24,11 +24,9 @@
         function addForm() {
             if ($scope.form.title) {
                 var newForm = {
-                    _id: (new Date()).getTime(),
                     title: $scope.form.title,
                     userId: currentUserId,
                     fields: []
-
                 };
                 FormService
                     .createFormForUser(currentUserId, newForm)

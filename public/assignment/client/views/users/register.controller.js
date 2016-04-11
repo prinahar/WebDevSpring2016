@@ -10,18 +10,13 @@
         function register(user) {
             if(user) {
                 console.log("register");
-                UserService.createUser(user)
+                UserService.registerUser(user)
                 .then(function(response) {
-                    if(response.data) {
-                        UserService.findUserByUsername(user.username)
-                        .then(function(response) {
-                            UserService.setUser(response.data);
-                            $location.url("/profile");
-                        });
-                    }
+                    UserService.setUser(response.data);
+                    $location.url("/profile");
                 });
-                $location.url("/profile");
-            }
+            };
+            $location.url("/profile");
         }
     }
 

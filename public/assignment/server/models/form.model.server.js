@@ -1,6 +1,14 @@
 var mock = require("./form.mock.json");
+var q = require("q");
 
-module.exports = function(app) {
+module.exports = function(db, mongoose) {
+
+    var FormSchema = require("./form.schema.server.js")(mongoose);
+
+    //create high-level API to talk to DB - DAO
+    //create form model from schema
+    var FormModel = mongoose.model('Form', FormSchema);
+
     var api = {
         createFormForUser : createFormForUser,
         deleteFormById : deleteFormById,
@@ -13,14 +21,23 @@ module.exports = function(app) {
     return api;
 
     function createFormForUser(userId, form) {
-        var newForm = {
-            _id : (new Date).getTime().toString(),
-            title : form.title,
-            userId : parseInt(userId),
-            fields : []
-        }
-        mock.push(newForm);
-        return newForm;
+        form.userId = userId;
+
+        // use q to defer the response
+        var deferred = q.defer();
+
+        FormModel.create(form, function(err, doc){
+            if(err) {
+                console.log("Error when creating form: " + err);
+                deferred.reject(err);
+            } else {
+                console.log("Success when creating form: " + doc);
+                deferred.resolve(doc);
+            }
+        });
+
+        // return a promise
+        return deferred.promise;
     }
 
     function deleteFormById(formId) {
@@ -54,16 +71,20 @@ module.exports = function(app) {
     }
 
     function findAllFormsForUser(userId) {
+
         console.log("UserId: " + userId);
-        var result = [];
-        for(var formIndex in mock) {
-            var form = mock[formIndex];
-            if(form.userId === userId) {
-                result.push(form);
-            }
-        }
-        console.log("Forms from model ->" + result);
-        return result;
+
+        var deferred = q.defer();
+        FormModel.find({userId: userId},
+            function(err, docs) {
+                if(err) {
+                    deferred.reject(err);
+                } else {
+                    console.log("Forms from model ->" + docs);
+                    deferred.resolve(docs);
+                }
+            });
+        return deferred.promise;
     }
 
     function findFormByTitle(title) {
@@ -77,13 +98,17 @@ module.exports = function(app) {
     }
 
     function findFormById(formId) {
-        for(var formIndex in mock) {
-            var form = mock[formIndex];
-            if(form._id === formId) {
-                return form;
+
+        var deferred = q.defer();
+
+        FormModel.findById(formId, function(err, doc) {
+            if(err) {
+                deferred.reject(err);
+            } else {
+                deferred.resolve(doc);
             }
-        }
-        return null;
+        });
+        return deferred.promise;
     }
 }
 

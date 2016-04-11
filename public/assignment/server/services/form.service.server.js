@@ -6,15 +6,29 @@ module.exports = function(app, formModel) {
     app.put("/api/assignment/form/:formId", updateForm);
 
     function getAllFormsForUser(req, res) {
-        var userId = Number(req.params.userId);
-        var forms = formModel.findAllFormsForUser(userId);
-        res.send(forms);
+        var userId = req.params.userId;
+        formModel.findAllFormsForUser(userId)
+            .then(
+                function(docs) {
+                    res.send(docs);
+                },
+                function(err) {
+                    res.status(400).send(err);
+                }
+            );
     }
 
     function getFormForId(req, res) {
         var id = req.params.formId;
-        var form = formModel.findFormById(id);
-        res.send(form);
+        formModel.findFormById(id)
+            .then(
+                function(doc) {
+                    res.send(doc);
+                },
+                function(err) {
+                    res.status(400).send(err);
+                }
+            );
     }
 
     function deleteFormById(req, res) {
@@ -26,8 +40,15 @@ module.exports = function(app, formModel) {
     function createFormWithUserId(req, res) {
         var userId = req.params.userId;
         var form = req.body;
-        var createdForm = formModel.createFormForUser(userId ,form);
-        res.send(createdForm);
+        formModel.createFormForUser(userId ,form)
+            .then(
+                function(doc) {
+                    res.send(doc);
+                },
+                function(err) {
+                    res.status(400).send(err);
+                }
+            );
     }
     function updateForm(req, res) {
         var formId = req.params.formId;

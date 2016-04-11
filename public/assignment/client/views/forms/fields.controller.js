@@ -10,7 +10,6 @@
         $scope.updateField = updateField;
         $scope.removeField = deleteField;
         $scope.editField = editField;
-        $scope.modalField = {};
         $scope.fields=[];
         $scope.field = {};
         $scope.fieldModal = {};
@@ -49,7 +48,6 @@
 
             if(fieldType == "singleLineText"){
                 field = {
-                    "_id" : new Date().getTime().toString(),
                     "label": "New Text Field",
                     "type": "TEXT",
                     "placeholder": "New Field"
@@ -60,7 +58,6 @@
 
             if(fieldType == "singleLineText"){
                 field = {
-                    "_id" : new Date().getTime().toString(),
                     "label": "New Text Field",
                     "type": "TEXTAREA",
                     "placeholder": "New Field"
@@ -71,7 +68,6 @@
             if(fieldType == "date"){
 
                 field = {
-                    "_id" : new Date().getTime().toString(),
                     "label": "New Date Field",
                     "type": "DATE"
                 };
@@ -81,7 +77,6 @@
             if(fieldType == "dropdown"){
 
                 field = {
-                    "_id" : new Date().getTime().toString(),
                     "label": "New Dropdown", "type": "OPTIONS", "options": [
                         {"label": "Option 1", "value": "OPTION_1"},
                         {"label": "Option 2", "value": "OPTION_2"},
@@ -95,7 +90,6 @@
             if(fieldType == "checkbox"){
 
                 field = {
-                    "_id" : new Date().getTime().toString(),
                     "label": "New Checkboxes", "type": "CHECKBOXES", "options": [
                         {"label": "Option A", "value": "OPTION_A"},
                         {"label": "Option B", "value": "OPTION_B"},
@@ -108,7 +102,6 @@
             if(fieldType == "radioButtons"){
 
                 field = {
-                    "_id" : new Date().getTime().toString(),
                     "label": "New Radio Buttons", "type": "RADIOS", "options": [
                         {"label": "Option X", "value": "OPTION_X"},
                         {"label": "Option Y", "value": "OPTION_Y"},
@@ -123,8 +116,7 @@
                     function (response) {
                         console.log(response.data);
                         $scope.fields = response.data;
-                        getFieldsForForm(formId);
-
+                        //getFieldsForForm(formId);
                     }
                 )
 
@@ -137,10 +129,8 @@
             FieldService.getFieldForForm(formId, fieldId)
                 .then(
                     function (response) {
-                        var newLabel  = response.data.label;
-                        $scope.fieldModal.label = newLabel;
-                        $scope.field._id = fieldId; //setting the field id for update field function to access
-                        //$scope.fieldModal._id = $scope.field._id;
+                        $scope.fieldModal = response.data;
+                        $scope.field = response.data; //setting the field for update field function to access
                     }
                 );
 
@@ -148,17 +138,17 @@
 
         function updateField(newField) {
             if (newField) {
-                if (newField.options) {
-                    newField.options = JSON.parse(newField.options);
-                }
+                //if (newField.options) {
+                //    newField.options = JSON.parse(newField.options);
+                //}
 
                 FieldService.updateField(formId, $scope.field._id, newField)
                     .then(
                         function (response) {
                                 console.log(response.data);
-                                $scope.modalField = response.data;
-                                $scope.field = response.data;
-                                getFieldsForForm(formId);
+                                $scope.field = {};
+                                $scope.fields = response.data;
+                                //getFieldsForForm(formId);
                         }
                     );
             }
