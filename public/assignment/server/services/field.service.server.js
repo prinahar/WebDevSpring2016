@@ -9,7 +9,7 @@ module.exports = function(app, formModel, fieldModel) {
     function createFieldForForm(req, res) {
         var formId = req.params.formId;
         var field = req.body;
-        var form = formModel.findFormById(formId)
+        formModel.findFormById(formId)
             .then(
                 function(doc) {
                     doc.fields.push(field);
@@ -50,7 +50,7 @@ module.exports = function(app, formModel, fieldModel) {
         var fieldId = req.params.fieldId;
         console.log(" Type of fieldId: " + typeof fieldId);
         console.log("Field: " + fieldId);
-        var form = formModel.findFormById(formId)
+        formModel.findFormById(formId)
             .then(
                 function(doc) {
                     var currFields = doc.fields;
@@ -71,17 +71,55 @@ module.exports = function(app, formModel, fieldModel) {
     }
 
     function deleteFieldFromForm(req, res){
+
         var formId = req.params.formId;
         var fieldId = req.params.fieldId;
-        var form = formModel.findFormById(formId);
-        var fields = form.fields;
-        for(var i in fields) {
-            if (fieldId === fields[i]._id) {
-                fields.splice(i, 1);
-                getFieldsForForm(req, res);
-            }
-        }
+        console.log("Reached server side delete function for field id " + fieldId);
+        formModel.findFormById(formId)
+            .then(
+                function(doc) {
+                    var fields = doc.fields;
+                    console.log("Fields of form : " + fields);
+                    for (var i in fields) {
+                        var field = fields[i];
+                        console.log("*****" + field);
+                        if (fieldId === field._id.toString()) {
+                            console.log("*****");
+                            fields.splice(i, 1);
+                            console.log("After Splice fields length :"+ fields.length);
+                            console.log("Fields after delete " + fields);
+                            formModel.updateFormById(formId, {
+                                    fields : fields
+                                })
+                                .then(
+                                    function(doc) {
+                                    console.log("After delete and update "+ doc);
+                                    res.send(doc);
+                                },
+                                    function(err) {
+                                        res.status(400).send(err);
+                                    }
+                                );
+
+                        }
+                    }
+                },
+                function(err) {
+                    res.status(400).send(err);
+                }
+            );
     }
+
+    //    getFieldForForm(req, res)
+    //    var form = formModel.findFormById(formId);
+    //    var fields = form.fields;
+    //    for(var i in fields) {
+    //        if (fieldId === fields[i]._id) {
+    //            fields.splice(i, 1);
+    //            getFieldsForForm(req, res);
+    //        }
+    //    }
+    //}
 
     function updateField(req, res){
         var formId = req.params.formId;

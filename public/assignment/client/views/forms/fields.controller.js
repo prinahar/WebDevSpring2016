@@ -155,10 +155,13 @@
         }
 
         function deleteField(fieldId) {
-            FieldService.deleteFieldFromForm(formId,fieldId)
+            FieldService.deleteFieldFromForm(formId, fieldId)
                 .then(
                     function (response) {
-                        $scope.fields = response.data;
+                        //$scope.fields = response.data;
+                        console.log(response.data);
+                        init();
+
                     }
                 );
         }

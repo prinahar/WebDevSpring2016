@@ -33,8 +33,16 @@ module.exports = function(app, formModel) {
 
     function deleteFormById(req, res) {
         var formId = req.params.formId;
-        var forms = formModel.deleteFormById(formId)
-        res.send(forms);
+        formModel.deleteFormById(formId)
+            .then(
+                function(doc) {
+                    console.log("Successfully deleted form");
+                    res.send(doc);
+                },
+                function(err) {
+                    res.status(400).send(err);
+                }
+            );
     }
 
     function createFormWithUserId(req, res) {
@@ -50,10 +58,21 @@ module.exports = function(app, formModel) {
                 }
             );
     }
+
     function updateForm(req, res) {
         var formId = req.params.formId;
         var newForm = req.body;
-        var updatedForm = formModel.updateFormById(formId,newForm);
-        res.send(updatedForm);
+
+        formModel.updateFormById(formId, {
+                title : newForm.title
+            })
+            .then(
+            function(doc) {
+                res.send(doc);
+            },
+            function(err) {
+                res.status(400).send(err);
+            }
+        );
     }
 }

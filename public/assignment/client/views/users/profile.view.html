@@ -32,6 +32,22 @@
             <input ng-model="user.lastName" id="lastName" class="form-control" type="text" placeholder="Last Name"/>
         </div>
     </div>
+    <div class="form-group">
+        <div class="col-xs-2">
+            <label for="email">Email :</label>
+        </div>
+        <div class="col-xs-9">
+            <input ng-model="user.emails" id="email" class="form-control" type="text" placeholder="Email"/>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-xs-2">
+            <label for="phone">Phone :</label>
+        </div>
+        <div class="col-xs-9">
+            <input ng-model="user.phones" id="phone" class="form-control" type="text" placeholder="000-000-0000"/>
+        </div>
+    </div>
     <div class="col-xs-2">
         <button ng-click="update(user)"class="btn btn-primary" type="button">Update</button>
     </div>

@@ -1,4 +1,3 @@
-var mock = require("./user.mock.json");
 
 var q = require("q");
 
