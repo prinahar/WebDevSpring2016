@@ -1,9 +1,9 @@
 (function() {
     angular
         .module("OnDemandApp")
-        .controller("RegisterController", RegisterController);
+        .controller("ProfessionalRegisterController", ProfessionalRegisterController);
 
-    function RegisterController() {
+    function ProfessionalRegisterController() {
     }
 
 })();

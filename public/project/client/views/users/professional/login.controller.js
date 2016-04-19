@@ -1,9 +1,9 @@
 (function() {
     angular
         .module("OnDemandApp")
-        .controller("LoginController", loginController);
+        .controller("ProfessionalLoginController", ProfessionalLoginController);
 
-    function loginController() {
+    function ProfessionalLoginController() {
 
     }
 
