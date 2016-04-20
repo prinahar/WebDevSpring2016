@@ -3,9 +3,9 @@ var app = express();
 var bodyParser = require('body-parser');
 var multer = require('multer'); // v1.0.5
 var uuid = require('node-uuid');
-var upload = multer(); // for parsing multipart/form-data
-//var session       = require('express-session');
-
+var cookieParser = require('cookie-parser');
+var session = require('express-session');
+var passport = require('passport');
 var mongoose = require('mongoose');
 var connectionString = 'mongodb://127.0.0.1:27017/AssignmentWebDev';
 
@@ -26,6 +26,15 @@ var port = process.env.OPENSHIFT_NODEJS_PORT || 3000;
 
 app.use(bodyParser.json()); // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true }));
+multer(); // for parsing multipart/form-data
+app.use(session({
+    secret : 'this is a secret',
+    resave : true,
+    saveUninitialized : true
+}));
+app.use(cookieParser());
+app.use(passport.initialize());
+app.use(passport.session());
 app.use(express.static(__dirname + '/public'));
 
 app.get('/hello', function(req, res){
