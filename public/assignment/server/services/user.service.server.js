@@ -153,7 +153,7 @@ module.exports = function (app, userModel) {
         userModel.updateUser(userId, updatedUser)
             .then(
                 function (doc) {
-
+                    return userModel.findAllUsers();
                 },
                 function (err) {
                     res.status(400).send(err);
