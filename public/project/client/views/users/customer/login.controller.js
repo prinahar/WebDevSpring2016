@@ -1,7 +1,7 @@
 (function() {
         angular
             .module("OnDemandApp")
-            .controller("fbLoginController", fbLoginController);
+            .controller("CustLoginController", fbLoginController);
 
         function fbLoginController() {
 

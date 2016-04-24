@@ -16,14 +16,10 @@
             })
             .when("/cust_register", {
                 templateUrl : "views/users/customer/register.view.html",
-                controller : "RegisterController"
+                controller : "CustRegisterController"
             })
             .when("/prof_login", {
                 templateUrl : "views/users/professional/login.view.html",
-                controller : "LoginController"
-            })
-            .when("/cust_login", {
-                templateUrl : "views/users/customer/fbLogin.view.html",
                 controller : "LoginController"
             })
             .when("/prof_profile", {
@@ -32,10 +28,10 @@
             })
             .when("/cust_profile", {
                 templateUrl : "views/users/customer/profile.view.html",
-                controller : "ProfileController"
+                controller : "CustProfileController"
             })
-            .when("/loginForCust", {
-            templateUrl : "views/users/fbLogin.view.html",
+            .when("/cust_login", {
+            templateUrl : "views/users/login.view.html",
             controller : "ProfileController"
             })
             .when("/checkout", {

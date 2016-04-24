@@ -42,5 +42,6 @@ app.get('/hello', function(req, res){
 });
 // Initializing server app.js
 require("./public/assignment/server/app.js")(app, db, mongoose);
+//require("./public/project/server/app.js")(app, db, mongoose);
 
 app.listen(port, ipaddress);

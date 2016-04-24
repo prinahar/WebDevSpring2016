@@ -18,7 +18,8 @@ module.exports = function(db, mongoose) {
         findUserByUsername: findUserByUsername,
         findUserByCredentials : findUserByCredentials,
         findUserIndexById : findUserIndexById,
-        findUserById : findUserById
+        findUserById : findUserById,
+        loginUserByCredentials : loginUserByCredentials
 
     };
     return api;
@@ -35,6 +36,7 @@ module.exports = function(db, mongoose) {
             if(err) {
                 deferred.reject(err);
             } else {
+                console.log("Creating new user in model " + doc);
                 deferred.resolve(doc);
             }
         });
@@ -53,6 +55,25 @@ module.exports = function(db, mongoose) {
                 deferred.resolve(doc);
             }
         });
+        return deferred.promise;
+    }
+
+    function loginUserByCredentials(credentials) {
+        var deferred = q.defer();
+        console.log("Finding in mongoose model");
+        UserModel.findOne(
+            {
+                username : credentials.username,
+                password : credentials.password
+            },
+            function(err, doc) {
+                if(err) {
+                    deferred.reject(err);
+                } else {
+                    deferred.resolve(doc);
+                }
+            }
+        );
         return deferred.promise;
     }
 
@@ -105,6 +126,7 @@ module.exports = function(db, mongoose) {
             if(err) {
                 deferred.reject(err);
             } else {
+                console.log("fetching all users from model");
                 deferred.resolve(docs);
             }
         });
@@ -113,10 +135,18 @@ module.exports = function(db, mongoose) {
 
     /***************/
     //Delete by id
-    function deleteUserById(userId)
-    {
-        var userIndex = findUserIndexById(userId);
-        mock.splice(userIndex, 1);
+    function deleteUserById(userId) {
+        var deferred = q.defer();
+        UserModel.findOneAndRemove(
+            {_id: userId},
+            function (err, doc) {
+                if (err) {
+                    deferred.reject(err);
+                } else {
+                    deferred.resolve(doc);
+                }
+            });
+        return deferred.promise;
     }
 
     //Update

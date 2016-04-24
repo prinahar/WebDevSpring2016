@@ -1,92 +1,65 @@
+
 (function() {
-    angular
-        .module("OnDemandApp")
-        .factory("UserService", userService);
+        angular
+            .module("OnDemandApp")
+            .factory("CustomerService", CustomerService);
 
-    function userService ($rootScope) {
-        var model = {
-            users: [
-                {	"_id":123, "firstName":"Alice",            "lastName":"Wonderland",
-                    "username":"alice",  "password":"alice",   "roles": ["student"]		},
-                {	"_id":234, "firstName":"Bob",              "lastName":"Hope",
-                    "username":"bob",    "password":"bob",     "roles": ["admin"]		},
-                {	"_id":345, "firstName":"Charlie",          "lastName":"Brown",
-                    "username":"charlie","password":"charlie", "roles": ["faculty"]		},
-                {	"_id":456, "firstName":"Dan",              "lastName":"Craig",
-                    "username":"dan",    "password":"dan",     "roles": ["faculty", "admin"]},
-                {	"_id":567, "firstName":"Edward",           "lastName":"Norton",
-                    "username":"ed",     "password":"ed",      "roles": ["student"]		}
-            ]
-        }
+        function CustomerService ($rootScope, $http) {
 
+            var service = {
+                setCustomer: setCustomer,
+                registerCustomer: registerCustomer
+                //findAllCustomers: findAllCustomers,
+                //findCustomerByCredentials: findCustomerByCredentials,
+                //deleteCustomerById: deleteCustomerById,
+                //updateCustomer: updateCustomer,
+                //findCustomerByCustomername: findCustomerByCustomername
 
-        var service = {
-            setUser : setUser,
-            findAllUsers : findAllUsers,
-            findUserByCredentials : findUserByCredentials,
-            createUser : createUser,
-            deleteUserById : deleteUserById,
-            updateUser : updateUser
+            };
+            return service;
 
-        };
-        return service;
+            function setCustomer(customer) {
+                $rootScope.customer = customer;
+            }
 
-        function setUser(user) {
-            $rootScope.user = user;
-        }
+            function findAllCustomers()
+            {
+                return $http.get("/api/project/customer");
+            }
 
-        function findAllUsers(callback)
-        {
-            return model.users;
-        }
+            function findCustomerByCredentials(customername, password)
+            {
+                return $http.get("/api/project/customer?customername="+ customername + "&password=" + password);
+            }
 
-        function findUserByCredentials(username, password, callback)
-        {
-            for(var userIndex in model.users) {
-                var user = model.users[userIndex];
-                if((user.username === username) && (user.password === password)) {
-                    return model.users[userIndex];
+            function registerCustomer(customer)
+            {
+                console.log("Found the customer register api on client");
+                return $http.post("/api/project/customer", customer);
+            }
+
+            function deleteCustomerById(customerId)
+            {
+                return $http.delete("/api/project/customer/" + customerId);
+            }
+
+            function updateCustomer(customerId, customer)
+            {
+                return $http.put("/api/project/customer/" + customerId, customer);
+            }
+            function findCustomerIndexById(customerId) {
+                var customers = findAllCustomers();
+                for(var customerIndex in customers) {
+                    var customer = customers[CustomerIndex];
+                    if(customer._id == customerId) {
+                        return customerIndex;
+                    }
                 }
             }
-            return null;
+
+            function findCustomerByCustomername(customername) {
+                return $http.get("/api/project/customer?customername=" + customername);
+            }
         }
 
-        function createUser(user, callback)
-        {
-            var newUser = {
-                _id : (new Date).getTime(),
-                firstName : user.firstName,
-                lastName : user.lastName,
-                username : user.username,
-                password : user.password,
-                roles : user.roles
-            }
-            model.users.push(newUser);
-            return newUser;
-        }
-        function deleteUserById(userId, callback)
-        {
-            var userIndex = findUserIndexById(userId);
-            model.users.splice(userIndex, 1);
-        }
-        function updateUser(userId, user, callback)
-        {
-            for(var userIndex in model.users) {
-                var userById = model.users[userIndex];
-                if(userById._id == userId) {
-                    userById = user;
-                    return userById;
-                }
-            }
-        }
-        function findUserIndexById(userId) {
-            for(var userIndex in model.users) {
-                var user = model.users[userIndex];
-                if(user._id == userId) {
-                    return userIndex;
-                }
-            }
-        }
-    }
-
-})();
+    })();

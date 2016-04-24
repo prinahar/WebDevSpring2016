@@ -1,10 +1,10 @@
 (function() {
     angular
         .module("OnDemandApp")
-        .controller("ProfileController", profileController);
+        .controller("CustProfileController", custProfileController);
 
-    function profileController() {
-
+    function custProfileController($rootScope, $scope) {
+        $rootScope.customer = $scope.customer;
     }
     //function profileController($scope, UserService, $rootScope) {
     //    //$scope.userId = $routeParams.id;

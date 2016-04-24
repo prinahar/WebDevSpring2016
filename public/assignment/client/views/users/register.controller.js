@@ -12,7 +12,7 @@
                 console.log("register");
                 UserService.registerUser(user)
                 .then(function(response) {
-                    UserService.setUser(response.data);
+                    UserService.setCurrentUser(response.data);
                     $location.url("/profile");
                 });
             };
