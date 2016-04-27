@@ -6,7 +6,8 @@
     function CustRegisterController(CustomerService, $scope, $rootScope, $location) {
 
         $scope.register = registerCustomer;
-        $scope.customer = {};
+        $scope.currentUser = {};
+
         function registerCustomer(customer) {
             console.log("Registering customer in Controller->");
             console.log(customer);
@@ -17,8 +18,10 @@
                         console.log("Response " + response.data);
                             if(response.data) {
                                 console.log(response.data);
-                                CustomerService.setCustomer(response.data);
+                                CustomerService.setCurrentUser(response.data);
                                 $location.url("/cust_profile");
+                            } else {
+                                $rootScope.error = "User with these credentials already exists.";
                             }
                     },
                     function(err) {

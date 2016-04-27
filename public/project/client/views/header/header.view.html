@@ -1,5 +1,5 @@
-<div id="page-top" class="index">
-    <nav class="navbar navbar-default navbar-fixed-top">
+<div id="page-top" class="index" ng-controller="HeaderController">
+    <nav class="navbar navbar-default">
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header page-scroll">
@@ -18,42 +18,35 @@
                     <li class="hidden">
                         <a href="#page-top"></a>
                     </li>
-                    <li><a href="#appointment">Appointment</a></li>
-                    <li><a href="#checkout">Checkout</a></li>
+                    <li>
+                        <a ng-show="currentUser.role=='professional'" href="#prof_profile" role="button">Profile</a>
+                    </li>
+                    <li>
+                        <a ng-show="currentUser.role=='customer'" href="#cust_profile" role="button">Profile</a>
+                    </li>
+                    <li>
+                        <a ng-show="currentUser.role=='customer'" href="#videos" role="button">Search Videos</a>
+                    </li>
+                    <li><a ng-show="currentUser.role=='customer'" href="#appointment">Book an Appointment</a></li>
+                    <li><a ng-show="currentUser.role=='customer'" href="#checkout">Checkout</a></li>
                     <li class="dropdown">
-                        <a id="loginDropdown" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                        <a id="loginDropdown" ng-hide="currentUser" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                             Login <span class="caret"></span></a>
                         <ul class="dropdown-menu" aria-labelledby="loginDropdown">
-                            <li><a href="#cust_login">Customer</a></li>
-                            <li><a href="#prof_login">Salon Professional</a></li>
+                            <li><a href="#login/customer">Customer</a></li>
+                            <li><a href="#login/professional">Salon Professional</a></li>
                         </ul>
                     </li>
                     <li class="dropdown">
-                        <a id="registrationDropdown" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                        <a id="registrationDropdown" ng-hide="currentUser" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                             Registration <span class="caret"></span></a>
                         <ul class="dropdown-menu" aria-labelledby="registrationDropdown">
-                            <li><a href="#cust_register">Customer</a></li>
+                            <li ><a href="#cust_register">Customer</a></li>
                             <li><a href="#prof_register">Salon Professional</a></li>
                         </ul>
                     </li>
-                    <li class="dropdown">
-                        <a id="profileDropdown" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                            Profile <span class="caret"></span></a>
-                        <ul class="dropdown-menu" aria-labelledby="profileDropdown">
-                            <li>
-                                <a href="#cust_profile">Customer</a>
-                            </li>
-                            <li><a href="#prof_profile">Salon Professional</a>
-                            </li>
-                        </ul>
                     <li>
-                        <a class="page-scroll" href="#works">How it Works</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#stylists">Stylists</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#contact">Contact</a>
+                        <a  ng-show="currentUser" ng-click="logout()" role="button">Logout</a>
                     </li>
                 </ul>
             </div>
@@ -62,48 +55,3 @@
         <!-- /.container-fluid -->
     </nav>
 </div>
-
-<!--<nav class="navbar navbar-default navbar-fixed-top">-->
-            <!--<div class="container">-->
-                <!--<div class="navbar-header">-->
-                    <!--<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">-->
-                        <!--<span class="sr-only">Toggle navigation</span>-->
-                        <!--<span class="icon-bar"></span>-->
-                        <!--<span class="icon-bar"></span>-->
-                        <!--<span class="icon-bar"></span>-->
-                    <!--</button>-->
-                    <!--<a class="navbar-brand" href="#home">Hairloom</a>-->
-                <!--</div>-->
-                <!--<div id="navbar" class="navbar-collapse collapse">-->
-                    <!--<ul class="nav navbar-nav">-->
-                        <!--<li class="active"><a href="#home">Home</a></li>-->
-                        <!--<li><a href="#appointment">Appointment</a></li>-->
-                        <!--<li><a href="#checkout">Checkout</a></li>-->
-                        <!--<li class="dropdown">-->
-                            <!--<a href="#home" id="loginDropdown" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">-->
-                                <!--Login <span class="caret"></span></a>-->
-                            <!--<ul class="dropdown-menu" aria-labelledby="loginDropdown">-->
-                                <!--<li><a href="#cust_login">Customer</a></li>-->
-                                <!--<li><a href="#prof_login">Salon Professional</a></li>-->
-                            <!--</ul>-->
-                        <!--</li>-->
-                        <!--<li class="dropdown">-->
-                            <!--<a href="#home" id="registrationDropdown" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">-->
-                                <!--Registration <span class="caret"></span></a>-->
-                            <!--<ul class="dropdown-menu" aria-labelledby="registrationDropdown">-->
-                                <!--<li><a href="#cust_register">Customer</a></li>-->
-                                <!--<li><a href="#prof_register">Salon Professional</a></li>-->
-                            <!--</ul>-->
-                        <!--</li>-->
-                        <!--<li class="dropdown">-->
-                            <!--<a href="#home" id="profileDropdown" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">-->
-                                <!--Profile <span class="caret"></span></a>-->
-                            <!--<ul class="dropdown-menu" aria-labelledby="profileDropdown">-->
-                                <!--<li><a href="#cust_profile">Customer</a></li>-->
-                                <!--<li><a href="#prof_profile">Salon Professional</a></li>-->
-                            <!--</ul>-->
-                        <!--</li>-->
-                    <!--</ul>-->
-                <!--</div>-->
-            <!--</div>-->
-        <!--</nav>-->

@@ -6,7 +6,8 @@ module.exports= function (mongoose) {
         email: {type: String, unique : true, required : true},
         firstName : String,
         lastName : String,
-        role : String
+        role : String,
+        creditcard : String
     },
         {collection : "customer"});
 

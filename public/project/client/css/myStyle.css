@@ -17,8 +17,13 @@ input {
 }
 
 .customBG {
-    background-image: url("http://nanosmile.net/wp-content/uploads/Cool-Black-Background-Designs.jpg");
+    /*background-image: url("http://nanosmile.net/wp-content/uploads/Cool-Black-Background-Designs.jpg");*/
+    background-color: #404040;
     height: 1000px;
     background-size: cover;
     color: white;
+}
+
+.navbar {
+    margin-bottom: 0px;
 }

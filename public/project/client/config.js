@@ -11,34 +11,31 @@
                 templateUrl : "views/home/home.view.html"
             })
             .when("/prof_register", {
-                templateUrl : "views/users/professional/register.view.html",
-                controller : "RegisterController"
+                templateUrl : "views/users/professional/register.view.html"
             })
             .when("/cust_register", {
-                templateUrl : "views/users/customer/register.view.html",
-                controller : "CustRegisterController"
-            })
-            .when("/prof_login", {
-                templateUrl : "views/users/professional/login.view.html",
-                controller : "LoginController"
+                templateUrl : "views/users/customer/register.view.html"
             })
             .when("/prof_profile", {
-                templateUrl : "views/users/professional/profile.view.html",
-                controller : "ProfileController"
+                templateUrl : "views/users/professional/profile.view.html"
             })
             .when("/cust_profile", {
-                templateUrl : "views/users/customer/profile.view.html",
-                controller : "CustProfileController"
+                templateUrl : "views/users/customer/profile.view.html"
             })
-            .when("/cust_login", {
-            templateUrl : "views/users/login.view.html",
-            controller : "ProfileController"
+            .when("/login/customer", {
+                templateUrl : "views/users/login.view.html"
+            })
+            .when("/login/professional", {
+                templateUrl : "views/users/login.view.html"
             })
             .when("/checkout", {
                 templateUrl : "views/users/customer/checkout.view.html"
             })
             .when("/appointment", {
                 templateUrl : "views/users/customer/appointment.view.html"
+            })
+            .when("/videos", {
+                templateUrl : "views/users/customer/videos.view.html"
             })
             .otherwise({
                 redirectTo: "/home"

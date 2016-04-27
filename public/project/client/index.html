@@ -41,16 +41,33 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
     <!--Angular Route-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-beta.0/angular-route.js"></script>
+    <script type="text/javascript">
+        function init() {
+            gapi.client.setApiKey("AIzaSyDF3Lv8_tojWrT83Y-_jl6yO3_nOWKbwPA");
+            gapi.client.load("youtube", "v3", function () {
+                //yt api is ready
+            });
+        }
+    </script>
+    <!--Google Api-->
+    <script src="https://apis.google.com/js/client.js?onload=init"></script>
+
     <script src="app.js"></script>
     <script src="config.js"></script>
+    <!--Services-->
     <script src="services/customer.service.client.js"></script>
+    <script src="services/professional.service.client.js"></script>
+    <script src="services/user.service.client.js"></script>
+
     <!--Controllers-->
     <script src="views/main/main.controller.js"></script>
     <script src="views/header/header.controller.js"></script>
     <script src="views/users/professional/register.controller.js"></script>
     <script src="views/users/customer/register.controller.js"></script>
-    <script src="views/users/professional/login.controller.js"></script>
+    <script src="views/users/login.controller.js"></script>
     <script src="views/users/customer/profile.controller.js"></script>
+    <script src="views/users/professional/profile.controller.js"></script>
+    <script src="views/users/customer/videos.controller.js"></script>
     <!--<script src="views/sidebar/sidebar.controller.js"></script>-->
 
 </head>

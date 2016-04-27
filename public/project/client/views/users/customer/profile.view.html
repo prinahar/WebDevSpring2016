@@ -19,7 +19,7 @@
                     <label for="userName">Username :</label>
                 </div>
                 <div class="col-xs-9">
-                    <input ng-model="customer.username" id="userName" class="form-control" type="text" placeholder="Username"/>
+                    <input ng-model="currentUser.username" id="userName" class="form-control" type="text" placeholder="Username"/>
                 </div>
             </div>
             <div class="form-group">
@@ -27,7 +27,7 @@
                     <label for="password"> Password :</label>
                 </div>
                 <div class="col-xs-9">
-                    <input ng-model="customer.password" id="password" class="form-control" type="password" placeholder="Password"/>
+                    <input ng-model="currentUser.password" id="password" class="form-control" type="password" placeholder="Password"/>
                 </div>
             </div>
             <div class="form-group">
@@ -35,7 +35,7 @@
                     <label for="firstName">First Name :</label>
                 </div>
                 <div class="col-xs-9">
-                    <input ng-model="customer.firstName" id="firstName" class="form-control" type="text" placeholder="First Name"/>
+                    <input ng-model="currentUser.firstName" id="firstName" class="form-control" type="text" placeholder="First Name"/>
                 </div>
             </div>
             <div class="form-group">
@@ -43,11 +43,18 @@
                     <label for="lastName">Last Name :</label>
                 </div>
                 <div class="col-xs-9">
-                    <input ng-model="customer.lastName" id="lastName" class="form-control" type="text" placeholder="Last Name"/>
+                    <input ng-model="currentUser.lastName" id="lastName" class="form-control" type="text" placeholder="Last Name"/>
                 </div>
             </div>
+            <div class="form-group">
+                <div class="col-xs-2">
+                    <label for="creditcard">Credit Card # :</label>
+                </div>
+                <div class="col-xs-9">
+                    <input ng-model="currentUser.creditcard" id="creditcard" class="form-control" type="text" placeholder="0000-0000-0000-0000"/>
+                </div>
             <div class="col-xs-2">
-                <button ng-click="update(customer)"class="btn btn-primary" type="button">Update</button>
+                <button ng-click="update(currentUser)"class="btn btn-primary" type="button">Update</button>
             </div>
         </form>
     </div>

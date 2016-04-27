@@ -7,19 +7,18 @@
         function CustomerService ($rootScope, $http) {
 
             var service = {
-                setCustomer: setCustomer,
-                registerCustomer: registerCustomer
+                registerCustomer: registerCustomer,
+                updateCustomer: updateCustomer,
+                setCurrentUser : setCurrentUser
                 //findAllCustomers: findAllCustomers,
                 //findCustomerByCredentials: findCustomerByCredentials,
-                //deleteCustomerById: deleteCustomerById,
-                //updateCustomer: updateCustomer,
-                //findCustomerByCustomername: findCustomerByCustomername
 
             };
             return service;
 
-            function setCustomer(customer) {
-                $rootScope.customer = customer;
+
+            function setCurrentUser(user) {
+                $rootScope.currentUser = user;
             }
 
             function findAllCustomers()
@@ -38,28 +37,30 @@
                 return $http.post("/api/project/customer", customer);
             }
 
-            function deleteCustomerById(customerId)
-            {
-                return $http.delete("/api/project/customer/" + customerId);
-            }
-
             function updateCustomer(customerId, customer)
             {
                 return $http.put("/api/project/customer/" + customerId, customer);
             }
-            function findCustomerIndexById(customerId) {
-                var customers = findAllCustomers();
-                for(var customerIndex in customers) {
-                    var customer = customers[CustomerIndex];
-                    if(customer._id == customerId) {
-                        return customerIndex;
-                    }
-                }
-            }
 
-            function findCustomerByCustomername(customername) {
-                return $http.get("/api/project/customer?customername=" + customername);
-            }
+
+            //function deleteCustomerById(customerId)
+            //{
+            //    return $http.delete("/api/project/customer/" + customerId);
+            //}
+            //function findCustomerIndexById(customerId) {
+            //    var customers = findAllCustomers();
+            //    for(var customerIndex in customers) {
+            //        var customer = customers[CustomerIndex];
+            //        if(customer._id == customerId) {
+            //            return customerIndex;
+            //        }
+            //    }
+            //}
+            //
+            //function findCustomerByCustomername(customername) {
+            //    return $http.get("/api/project/customer?customername=" + customername);
+            //}
+
         }
 
     })();

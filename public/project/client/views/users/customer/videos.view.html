@@ -1,0 +1,20 @@
+<div class="customBG">
+    <div class="container" ng-controller="VideoSearchController">
+        <h1>Search for Hair Care</h1>
+        <div class="row">
+            <div ng-if="message">
+                {{message}}
+            </div>
+            <form>
+                <div class="col-xs-6 col-xs-offset-3">
+                    <input class="form-control" type="text" ng-model="query" id="query" placeholder="Hair styles"/>
+                    <input ng-click="search()"  type="submit" id="submit" class="form-control btn btn-primary" value="Double-click to search"/>
+                </div>
+            </form>
+            <div class="col-xs-6 col-xs-offset-3" ng-repeat="videoId in results" id="results">
+                <iframe class="video" width="640" height="360" src="{{videoId}}" frameborder="0" allowfullscreen></iframe>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>

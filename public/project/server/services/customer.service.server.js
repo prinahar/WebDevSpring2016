@@ -1,10 +1,9 @@
 module.exports = function(app, customerModel) {
 
-    console.log("Trying to find register/create API on server");
-    app.post('/api/project/customer', createCustomer);
+    app.post('/api/project/customer', registerCustomer);
+    app.put("/api/project/customer/:id", updateCustomer);
 
-
-    function createCustomer(req, res) {
+    function registerCustomer(req, res) {
         var customer = req.body;
         console.log("On Server side - got the customer to register from client -> " + customer);
         customerModel.createCustomer(customer)
@@ -17,4 +16,30 @@ module.exports = function(app, customerModel) {
                 }
             );
     }
+
+    function updateCustomer(req, res) {
+        var customerId = req.params.id;
+        var updatedCustomer = req.body;
+
+        customerModel.updateCustomer(customerId, updatedCustomer)
+            .then(
+                function (doc) {
+                    return customerModel.findAllCustomers();
+                },
+                function (err) {
+                    res.status(400).send(err);
+                }
+            )
+            .then(
+                function (customers) {
+                    res.json(customers);
+                },
+                function (err) {
+                    res.status(400).send(err);
+                }
+            )
+    }
+
+
+
 }

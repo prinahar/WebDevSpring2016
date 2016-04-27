@@ -4,8 +4,6 @@
         .controller("ProfileController", profileController);
 
     function profileController($scope, UserService, $rootScope) {
-        //$scope.userId = $routeParams.id;
-
         $scope.user = $rootScope.user;
 
         $scope.update = update;
