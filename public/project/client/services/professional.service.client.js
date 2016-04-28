@@ -9,7 +9,7 @@
             registerProfessional: registerProfessional,
             findAllProfessionals: findAllProfessionals,
             updateProfessional: updateProfessional,
-            setCurrentUser : setCurrentUser
+            setCurrentUser : setCurrentUser,
         };
         return service;
 

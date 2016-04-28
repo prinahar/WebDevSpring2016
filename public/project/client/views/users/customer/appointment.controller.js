@@ -16,7 +16,7 @@
         $scope.message = null;
 
         $scope.$watch('currentProfessionalJSON', function() {
-            $scope.currentProfessional = JSON.parse($scope.currentProfessionalJSON);
+            $scope.currentProfessional = angular.fromJson($scope.currentProfessionalJSON);
             searchAvailability($scope.currentProfessional);
         });
 
