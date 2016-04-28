@@ -5,4 +5,7 @@ module.exports = function (app, db, mongoose) {
     var professionalModel = require("./models/professional.model.server.js")(db, mongoose);
     var professionalService = require("./services/professional.service.server.js")(app, professionalModel);
     var userService = require("./services/user.service.server.js")(app, customerModel, professionalModel);
+    var appointmentModel = require("./models/appointment.model.server.js")(db, mongoose);
+    var appointmentService = require("./services/appointment.service.server.js")(app, appointmentModel, customerModel,professionalModel);
+
 };

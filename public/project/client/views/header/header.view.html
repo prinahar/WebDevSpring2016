@@ -22,12 +22,19 @@
                         <a ng-show="currentUser.role=='professional'" href="#prof_profile" role="button">Profile</a>
                     </li>
                     <li>
+                        <a ng-show="currentUser.role=='professional'" href="#availability" role="button">Availability</a>
+                    </li>
+                    <li>
+                        <a ng-show="currentUser.role=='professional'" href="#prof_upcoming" role="button">Upcoming</a>
+                    </li>
+                    <li>
                         <a ng-show="currentUser.role=='customer'" href="#cust_profile" role="button">Profile</a>
                     </li>
                     <li>
                         <a ng-show="currentUser.role=='customer'" href="#videos" role="button">Search Videos</a>
                     </li>
-                    <li><a ng-show="currentUser.role=='customer'" href="#appointment">Book an Appointment</a></li>
+                    <li><a ng-show="currentUser.role=='customer'" href="#cust_upcoming">Upcoming</a></li>
+                    <li><a ng-show="currentUser.role=='customer'" href="#book_appointments">Book an Appointment</a></li>
                     <li><a ng-show="currentUser.role=='customer'" href="#checkout">Checkout</a></li>
                     <li class="dropdown">
                         <a id="loginDropdown" ng-hide="currentUser" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">

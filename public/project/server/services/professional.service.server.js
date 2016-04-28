@@ -25,7 +25,7 @@ module.exports = function(app, professionalModel) {
         var professionalId = req.params.id;
         var updatedProfessional = req.body;
 
-        if (typeof updatedProfessional.services == "string") {
+        if (updatedProfessional.services && typeof updatedProfessional.services == "string") {
             updatedProfessional.services = updatedProfessional.services.split(",");
         }
         professionalModel.updateProfessional(professionalId, updatedProfessional)

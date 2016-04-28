@@ -1,0 +1,13 @@
+<div class="customBG" ng-controller="UpcomingProfessionalController">
+    <div class="container">
+        <h1 class="page-header">View Appointments for {{currentUser.username}}</h1>
+        <div ng-repeat="appointment in appointments" >
+            <div class="btn btn-primary">
+                <div>Order ID: {{appointment._id}}</div>
+                <div>Customer ID{{appointment.customerId}}</div>
+                <div>{{appointment.time}}</div>
+                <div>{{appointment.status}}</div>
+            </div>
+        </div>
+    </div>
+</div>

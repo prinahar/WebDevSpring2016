@@ -26,10 +26,10 @@
                 return $http.get("/api/project/customer");
             }
 
-            function findCustomerByCredentials(customername, password)
-            {
-                return $http.get("/api/project/customer?customername="+ customername + "&password=" + password);
-            }
+            //function findCustomerByCredentials(customername, password)
+            //{
+            //    return $http.get("/api/project/customer?customername="+ customername + "&password=" + password);
+            //}
 
             function registerCustomer(customer)
             {

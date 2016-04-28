@@ -1,5 +1,6 @@
 
 module.exports= function (mongoose) {
+
     var ProfessionalSchema = mongoose.Schema({
             username: {type: String, unique : true, required : true},
             password: {type: String, unique : true, required : true},

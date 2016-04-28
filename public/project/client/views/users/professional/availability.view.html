@@ -1,0 +1,25 @@
+<div class="customBG">
+    <div class="container" ng-controller="ProfessionalAvailabilityController">
+        <h1 class="page-header">Select Availability</h1>
+        <div class="row">
+            <div class="col-xs-12">
+                <p>Select Available Times</p>
+            </div>
+            <div class="col-xs-6">
+                <select class="form-control" ng-model="time">
+                    <option value="9 a.m."> 9:00 a.m.</option>
+                    <option value="10 a.m."> 10:00 a.m.</option>
+                    <option value="11 a.m."> 11:00 a.m.</option>
+                    <option value="12 p.m."> 12:00 p.m.</option>
+                    <option value="1 p.m."> 1:00 p.m.</option>
+                    <option value="2 p.m."> 2:00 p.m.</option>
+                    <option value="3 p.m."> 3:00 p.m.</option>
+                    <option value="4 p.m."> 4:00 p.m.</option>
+                    <option value="5 p.m."> 5:00 p.m.</option>
+                </select>
+            </div>
+        </div>
+        <button class="btn btn-success" type="submit" ng-click="createAvailAppointment(time)" >Submit</button>
+        <div ng-if="message" class="alert alert-success">{{message}}</div>
+    </div>
+</div>

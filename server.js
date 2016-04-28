@@ -7,7 +7,7 @@ var cookieParser = require('cookie-parser');
 var session = require('express-session');
 var passport = require('passport');
 var mongoose = require('mongoose');
-var connectionString = 'mongodb://127.0.0.1:27017/AssignmentWebDev';
+var connectionString = process.env.OPENSHIFT_MONGODB_DB_URL || 'mongodb://127.0.0.1:27017/AssignmentWebDev';
 
 // use remote connection string
 // if running in remote server

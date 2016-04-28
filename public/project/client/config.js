@@ -31,11 +31,20 @@
             .when("/checkout", {
                 templateUrl : "views/users/customer/checkout.view.html"
             })
-            .when("/appointment", {
+            .when("/book_appointments", {
                 templateUrl : "views/users/customer/appointment.view.html"
+            })
+            .when("/cust_upcoming", {
+                templateUrl : "views/users/customer/upcoming.view.html"
+            })
+            .when("/prof_upcoming", {
+                templateUrl : "views/users/professional/upcoming.view.html"
             })
             .when("/videos", {
                 templateUrl : "views/users/customer/videos.view.html"
+            })
+            .when("/availability", {
+                templateUrl : "views/users/professional/availability.view.html"
             })
             .otherwise({
                 redirectTo: "/home"
