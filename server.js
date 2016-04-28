@@ -12,9 +12,10 @@ var connectionString = process.env.OPENSHIFT_MONGODB_DB_URL || 'mongodb://127.0.
 // use remote connection string
 // if running in remote server
 if(process.env.OPENSHIFT_MONGODB_DB_PASSWORD) {
-    connectionString = process.env.OPENSHIFT_MONGODB_DB_USERNAME + ":" +
-        process.env.OPENSHIFT_MONGODB_DB_PASSWORD + "@" +
-        process.env.OPENSHIFT_APP_NAME;
+    //connectionString = process.env.OPENSHIFT_MONGODB_DB_USERNAME + ":" +
+    //    process.env.OPENSHIFT_MONGODB_DB_PASSWORD + "@" +
+    //    process.env.OPENSHIFT_APP_NAME;
+    connectionString = process.env.OPENSHIFT_MONGODB_DB_URL + process.env.OPENSHIFT_APP_NAME;
     }
 
 // connect to the database
