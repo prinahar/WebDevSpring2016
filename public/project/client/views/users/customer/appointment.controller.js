@@ -4,7 +4,7 @@
         .module("OnDemandApp")
         .controller("AppointmentBookingController", appointmentBookingController);
 
-    function appointmentBookingController($rootScope, $scope, AppointmentService, ProfessionalService) {
+    function appointmentBookingController($rootScope, $scope, AppointmentService, ProfessionalService, $location) {
         $rootScope.currentUser = $scope.currentUser;
         $scope.professionals = [];
         $scope.appointments = [];
@@ -65,6 +65,7 @@
                             console.log("Successfully " + response);
                             if(response) {
                                 $scope.message = "Successfully booked with " + $scope.currentProfessional.username + " for " + $scope.currentService + " service."
+                                $location.url("/checkout");
                             } else {
                                 $scope.message = "Failure to book!"
                             }
